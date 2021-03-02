@@ -3,6 +3,10 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   mode: 'spa',
   ssr: false,
+  target: 'static',
+  router: {
+    base: '/perseverance/'
+  },
   /*
   ** Headers of the page
   */
