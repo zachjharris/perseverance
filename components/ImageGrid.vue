@@ -99,7 +99,7 @@ export default {
             this.max = result.num_images;
             
             const photos = [...result.images, ...this.photos];
-            photos.sort((d1, d2) => new Date(d2.date).getTime() - new Date(d1.date).getTime());
+            photos.sort((d1, d2) => new Date(d2.date_taken_utc) - new Date(d1.date_taken_utc));
             this.photos = photos;
             //this.photos = sortBy(photos, (p) => new Date(p.date_taken_utc));
             //this.photos = orderBy(photos, ['date_taken_utc'], ['desc']);

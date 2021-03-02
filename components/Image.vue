@@ -5,7 +5,7 @@
             <v-row class="mx-0">
                 <span class="caption">{{ props.photo.camera.instrument }}</span>
                 <v-spacer />
-                <span class="caption">{{ $options.format(new Date(props.photo.date_taken_utc), 'MM/dd/yyyy HH:mma') }}</span>
+                <span class="caption">{{ $options.format(new Date(props.photo.date_taken_utc), 'MM/dd/yyyy h:mma') }}</span>
             </v-row>
         </v-card-title>
     </v-card>
