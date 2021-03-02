@@ -37,7 +37,6 @@
     </v-container>
 </template>
 <script>
-import { sortBy } from 'lodash-es';
 const PImage = () => import('~/components/Image');
 import { format } from 'date-fns';
 export default {
@@ -100,7 +99,9 @@ export default {
             this.max = result.num_images;
             
             const photos = [...result.images, ...this.photos];
-            this.photos = sortBy(photos, (p) => new Date(p.date_taken_utc));
+            photos.sort((d1, d2) => new Date(d2.date).getTime() - new Date(d1.date).getTime());
+            this.photos = photos;
+            //this.photos = sortBy(photos, (p) => new Date(p.date_taken_utc));
             //this.photos = orderBy(photos, ['date_taken_utc'], ['desc']);
             this.config.latest_sol--;
             this.loading = false;
