@@ -37,7 +37,7 @@
     </v-container>
 </template>
 <script>
-import { orderBy, uniqBy } from 'lodash-es';
+import { sortBy } from 'lodash-es';
 const PImage = () => import('~/components/Image');
 import { format } from 'date-fns';
 export default {
@@ -98,8 +98,10 @@ export default {
             const endpoint = `https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&sol=${this.config.latest_sol}&page=1`;
             const result = await this.$axios.$get(endpoint);
             this.max = result.num_images;
+            
             const photos = [...result.images, ...this.photos];
-            this.photos = orderBy(photos, ['date_taken_utc'], ['desc']);
+            this.photos = sortBy(photos, (p) => new Date(p.date_taken_utc));
+            //this.photos = orderBy(photos, ['date_taken_utc'], ['desc']);
             this.config.latest_sol--;
             this.loading = false;
             this.requesting = false;
