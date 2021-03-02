@@ -29,7 +29,7 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-dialog :value="loading">
+        <v-dialog :value="loading" hide-overlay>
             <div class="text-center">
                 <v-progress-circular v-if="loading" indeterminate size="50" width="5" color="blue"></v-progress-circular>
             </div>
